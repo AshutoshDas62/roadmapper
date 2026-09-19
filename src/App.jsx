@@ -6,6 +6,9 @@ import { DashboardPage } from './pages/DashboardPage'
 import { ForgotPasswordPage } from './pages/ForgotPasswordPage'
 import { LoginPage } from './pages/LoginPage'
 import { PlaceholderPage } from './pages/PlaceholderPage'
+import { RoadmapDetailPage } from './pages/RoadmapDetailPage'
+import { RoadmapNewPage } from './pages/RoadmapNewPage'
+import { RoadmapsPage } from './pages/RoadmapsPage'
 import { ResetPasswordPage } from './pages/ResetPasswordPage'
 import { SignupPage } from './pages/SignupPage'
 
@@ -20,7 +23,9 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route element={<AppLayout />}>
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/roadmaps" element={<PlaceholderPage title="Roadmaps" />} />
+            <Route path="/roadmaps" element={<RoadmapsPage />} />
+            <Route path="/roadmaps/new" element={<RoadmapNewPage />} />
+            <Route path="/roadmaps/:id" element={<RoadmapDetailPage />} />
             <Route path="/calendar" element={<PlaceholderPage title="Calendar" />} />
             <Route path="/bookmarks" element={<PlaceholderPage title="Bookmarks" />} />
             <Route path="/important" element={<PlaceholderPage title="Important" />} />

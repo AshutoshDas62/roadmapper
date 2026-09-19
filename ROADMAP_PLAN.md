@@ -28,11 +28,12 @@ Sharing + JSON Import/Export + PDF Export + Final Testing
 
 ## Current Phase
 
-Phase 2
+Phase 3
 
 ## Completed Phases
 
 Phase 1 - Foundation + Authentication
+Phase 2 - Roadmap Management
 
 ## Development Rule
 
