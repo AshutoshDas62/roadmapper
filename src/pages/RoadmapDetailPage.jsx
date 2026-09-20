@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { RoadmapForm } from '../components/RoadmapForm'
 import { deleteRoadmap, duplicateRoadmap, updateRoadmap } from '../lib/roadmaps'
 import { RoadmapIcon } from '../components/RoadmapIcon'
+import { RoadmapEditor } from '../components/RoadmapEditor'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../context/useAuth'
 
@@ -93,7 +94,7 @@ export function RoadmapDetailPage() {
 
   const isPublic = roadmap.visibility === 'PUBLIC'
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-6xl">
       <Link to="/roadmaps" className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900"><ArrowLeft size={16} aria-hidden="true" /> Back to roadmaps</Link>
       <div className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
         {isEditing ? <>
@@ -106,7 +107,6 @@ export function RoadmapDetailPage() {
           </div>
           <p className="mt-7 whitespace-pre-wrap text-sm leading-7 text-slate-600">{roadmap.description || 'No description yet.'}</p>
           <div className="mt-7 flex flex-wrap gap-2"><span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-600">{isPublic ? <Globe2 size={14} aria-hidden="true" /> : <Lock size={14} aria-hidden="true" />}{isPublic ? 'Public' : 'Private'}</span>{roadmap.archived && <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-medium text-amber-700"><Archive size={14} aria-hidden="true" /> Archived</span>}</div>
-          <div className="mt-8 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5"><h2 className="font-semibold text-slate-900">Ready for topics later</h2><p className="mt-1 text-sm leading-6 text-slate-600">This roadmap’s topic editor will be introduced in Phase 3. For now, you can manage its details here.</p></div>
           {actionError && <p className="mt-6 rounded-lg bg-red-50 px-3 py-2.5 text-sm text-red-700" role="alert">{actionError}</p>}
           <div className="mt-8 flex flex-wrap gap-3 border-t border-slate-100 pt-6">
             <button type="button" onClick={handleDuplicate} disabled={isActing} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-60"><Copy size={16} aria-hidden="true" /> Duplicate</button>
@@ -115,6 +115,7 @@ export function RoadmapDetailPage() {
           </div>
         </>}
       </div>
+      {!isEditing && <RoadmapEditor roadmapId={roadmap.id} />}
     </div>
   )
 }

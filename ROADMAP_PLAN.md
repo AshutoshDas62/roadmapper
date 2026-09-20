@@ -28,12 +28,13 @@ Sharing + JSON Import/Export + PDF Export + Final Testing
 
 ## Current Phase
 
-Phase 3
+Phase 4 (not started)
 
 ## Completed Phases
 
 Phase 1 - Foundation + Authentication
 Phase 2 - Roadmap Management
+Phase 3 - Visual Roadmap Editor
 
 ## Development Rule
 

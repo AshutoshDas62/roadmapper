@@ -15,7 +15,8 @@ export function SignupPage() {
 
   async function handleSubmit(event) {
     event.preventDefault()
-    const form = new FormData(event.currentTarget)
+    const formElement = event.currentTarget
+    const form = new FormData(formElement)
     const password = form.get('password')
     if (password !== form.get('confirmPassword')) {
       setError('Passwords do not match.')
@@ -27,7 +28,7 @@ export function SignupPage() {
     try {
       const data = await signUp({ email: form.get('email'), password, username: form.get('username'), fullName: form.get('fullName') })
       setSuccess(data.session ? 'Account created. You are now signed in.' : 'Account created. Check your email to confirm your address, then sign in.')
-      event.currentTarget.reset()
+      formElement.reset()
     } catch (submissionError) {
       setError(submissionError.message)
     } finally {
